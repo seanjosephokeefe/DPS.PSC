@@ -1,4 +1,4 @@
-﻿//TRIAL 1 INSTRUCTIONS
+//TRIAL 1 INSTRUCTIONS
 Main.CollectBatteriesInstr = function (game) {
     Main.Instr.call(this);
 }
@@ -43,9 +43,8 @@ Main.CollectBatteries.prototype.setText = function () {
 }//Main.CollectBatteries
 
 Main.CollectBatteries.prototype.lose = function () {
-    audio.pause(); // to pause the existing runnign game sounds
-
-    playSound('sounds/qucikle_drag_batteries.mp3');// adding the sound function
+  //  audio.pause(); // to pause the existing runnign game sounds
+   // playSound('sounds/qucikle_drag_batteries.mp3');// adding the sound function
     hintText = "Quickly drag all the batteries into the center.";
     loseNeutral1();
 }
@@ -79,14 +78,16 @@ Main.Candle.prototype.setPlayer = function () {
     playerHitBox.alpha = 0.2;
 }
 
-Main.Candle.prototype.setObstacles = function () {
+Main.Candle.prototype.setObstacles = function ()
+{
     var rand = this.game.rnd.integerInRange(1, 3);
     var girlString = "flammablegirl" + rand.toString();;
     obstaclesList = ['tnt', girlString, 'blanket', 'book'];
     obstacleSpeed = [4, 2, 4, 6];
 }
 
-Main.Candle.prototype.setEmitter = function () {
+Main.Candle.prototype.setEmitter = function ()
+{
     usesEmitter = true;
     emitter = this.game.add.emitter(0, 0, 100);
     emitter.makeParticles('particle_fire');
@@ -96,16 +97,17 @@ Main.Candle.prototype.setEmitter = function () {
 }
 
 Main.Candle.prototype.setText = function () {
+//
+   audio.pause(); // to pause the existing runnign game sounds
 
-    audio.pause(); // to pause the existing runnign game sounds
-
-    playSound('sounds/keep_the_candle.mp3');// adding the sound function
+   playSound('sounds/keep_the_candle.mp3');// adding the sound function
     setTrialTextString("Keep the candle away from the flammable materials!");
 }
 
-Main.Candle.prototype.lose = function () {
-    audio.pause(); // to pause the existing runnign game sounds
-    playSound('sounds/keep_candle_away.mp3');// adding the sound function
+Main.Candle.prototype.lose = function ()
+{
+  //  audio.pause(); // to pause the existing runnign game sounds
+  //  playSound('sounds/keep_candle_away.mp3');// adding the sound function
     hintText = "Drag the candle away from the moving objects until time runs out.";
     loseNeutral0();
 }
@@ -144,8 +146,8 @@ Main.WaterCatcher.prototype.setObjects = function () {
 }//Main.WaterCatcher
 
 Main.WaterCatcher.prototype.lose = function () {
-    audio.pause(); // to pause the existing runnign game sounds
-    playSound('drag_basin.mp3');// adding the sound function
+  //  audio.pause(); // to pause the existing runnign game sounds
+ //   playSound('drag_basin.mp3');// adding the sound function
     hintText = "Drag the basin side to side and catch the falling water drops until time runs out.";
     loseNeutral2();
 }
@@ -292,7 +294,7 @@ Main.PhoneCharger.prototype.goalHit = function () {
 }
 
 Main.PhoneCharger.prototype.lose = function () {
-    audio.pause(); // to pause the existing runnign game sounds
+   // audio.pause(); // to pause the existing runnign game sounds
     hintText = "Drag the charger cord to the phone.";
     loseNeutral4();
 }
@@ -323,7 +325,7 @@ Main.CloseRefrigerators.prototype.setAppliances = function () {
 
 Main.CloseRefrigerators.prototype.setText = function () {
     audio.pause(); // to pause the existing runnign game sounds
-    playSound('sounds/powersout.mp3');// adding the sound function
+    playSound('sounds/powersout_fridge.mp3');// adding the sound function
     setTrialTextString("The power's out, close all the refrigerators and freezers!");
 }//Main.CloseRefrigerators
 
@@ -339,7 +341,8 @@ Main.TurnOffAppliancesInstr = function (game) {
 }
 Main.TurnOffAppliancesInstr.prototype = Object.create(Main.Instr.prototype);
 Main.TurnOffAppliancesInstr.prototype.changeText = function () {
-    playSound('sounds/durinf_power.mp3');// adding the sound function
+  //  audio.pause();
+    playSound('sounds/during_power.mp3');// adding the sound function
     text.text = "During a power outage, it is wise to unplug all major appliances to prevent damage from an electrical surge when the power comes back on.";
 }//changeText
 //TRIAL 13 SCREEN/STATE
@@ -355,11 +358,13 @@ Main.TurnOffAppliances.prototype.setAppliances = function () {
 }
 
 Main.TurnOffAppliances.prototype.setText = function () {
+    audio.pause();
     playSound('sounds/powersout.mp3');// adding the sound function
     setTrialTextString("The power's out, turn off all major appliances!");
 }
 
-Main.TurnOffAppliances.prototype.lose = function () {
+Main.TurnOffAppliances.prototype.lose = function ()
+{
     hintText = "Tap on all the electrical devices to turn them off.";
     loseNeutral6();
 }//Main.TurnOffAppliances
