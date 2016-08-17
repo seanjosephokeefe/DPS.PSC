@@ -1,4 +1,4 @@
-﻿var game;
+var game;
 var gameStates = new Array();
 var currentPlanet = new Array();
 var test = new Array();
@@ -23,6 +23,7 @@ var rect;
 
 
 
+
     var idleTimer = null;
 var idleTime = 0;
 var canIdle = true;
@@ -43,6 +44,7 @@ var skipKey;//skip key is space
 
 //START OF GAME STATES
 var Main = {};
+
 
 window.onload = function () {
     document.ontouchstart = function (e) { e.preventDefault(); }//ontouchmove
@@ -67,14 +69,14 @@ window.onload = function () {
         skipKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
         //check for activeness: from the original script but not working
-     /*    if (canIdle) {
-                  var area = document.getElementById("game").addEventListener('touchstart', resetIdleTimer);
-                  var area = document.getElementById("game").addEventListener('touchmove', resetIdleTimer);
-                  var area = document.getElementById("game").addEventListener('touchend', resetIdleTimer);
-                  var area = document.getElementById("game").addEventListener('touchcancel', resetIdleTimer);
-              }
-           */
-       
+        /*    if (canIdle) {
+                     var area = document.getElementById("game").addEventListener('touchstart', resetIdleTimer);
+                     var area = document.getElementById("game").addEventListener('touchmove', resetIdleTimer);
+                     var area = document.getElementById("game").addEventListener('touchend', resetIdleTimer);
+                     var area = document.getElementById("game").addEventListener('touchcancel', resetIdleTimer);
+                 }
+              */
+
 
         //game.add.image(0, 0, 'background');
         game.state.add('boot', Main.Boot, true);//Main.Boot.key
@@ -97,13 +99,10 @@ window.onload = function () {
         game.state.add('GW', Main.GW)
         game.state.add('badge', Main.badge);
         game.state.add('badgepic', Main.badgepic);
-        //  game.state.add('printbadge', Main.printbadge);
+        game.state.add('printbadge', Main.printbadge);
         game.state.add('ThunderDialogue', Main.ThunderDialogue);
         game.state.add('GasDialogue', Main.GasDialogue);
         game.state.add('ElectricDialogue', Main.ElectricDialogue);
-        game.state.add('printbadge', Main.printbadge);
-
-
 
 
 
@@ -111,20 +110,20 @@ window.onload = function () {
 
         {
             var a0 = ['gasDetectorInstr', 'animalSoundInstr', 'rottenEggsInstr', 'followNoseInstr', 'grillInstr', 'stoveClutterInstr'];
-            var a01 = a0.sort(function (a, b) { return 0.5 - randomvariable });
+            var a01 = a0.sort(function () { return 0.5 - randomvariable });
         } {
             var b0 = [Main.GasDetectorInstr, Main.AnimalSoundInstr, Main.RottenEggsInstr, Main.FollowNoseInstr, Main.GrillInstr, Main.StoveClutterInstr];
 
-            var b01 = b0.sort(function (a, b) { return 0.5 - randomvariable });
+            var b01 = b0.sort(function () { return 0.5 - randomvariable });
         } {
             var c0 = ['gasDetector ', 'animalSound ', 'rottenEggs ', 'followNose ', 'grill ', 'stoveClutter ']
 
-            var c01 = c0.sort(function (a, b) { return 0.5 - randomvariable });
+            var c01 = c0.sort(function () { return 0.5 - randomvariable });
 
         } {
             var d0 = [Main.GasDetector, Main.AnimalSound, Main.RottenEggs, Main.FollowNose, Main.Grill, Main.StoveClutter];
 
-            var d01 = d0.sort(function (a, b) { return 0.5 - randomvariable });
+            var d01 = d0.sort(function () { return 0.5 - randomvariable });
         }
 
         makeAndStoreTrialStates(a01[0], b01[0], c01[0], d01[0], gasPlanetStates);
@@ -133,26 +132,28 @@ window.onload = function () {
         makeAndStoreTrialStates(a01[2], b01[2], c01[2], d01[2], gasPlanetStates);
 
 
+        var randomvariable1 = Math.random();
+
         // bhargav this is for electric planet
         {
             var e0 = ['safeOutletInstr', 'pullPlugInstr', 'moveFurnitureInstr', 'wetHandsInstr', 'tubMoverInstr', 'ladderInstr', 'kiteMoverInstr'];
-            var e01 = e0.sort(function (a, b) { return 0.5 - randomvariable });
+            var e01 = e0.sort(function () { return 0.5 - randomvariable1 });
         }
         {
             var f0 = [Main.SafeOutletInstr, Main.PullPlugInstr, Main.MoveFurnitureInstr, Main.WetHandsInstr, Main.TubMoverInstr, Main.ladderInstr, Main.KiteMoverInstr];
 
-            var f01 = f0.sort(function (a, b) { return 0.5 - randomvariable });
+            var f01 = f0.sort(function () { return 0.5 - randomvariable1 });
         }
         {
             var g0 = ['safeOutlet', 'pullPlug', 'moveFurniture', 'wetHands', 'tubMove', 'ladder', 'kiteMover']
 
-            var g01 = g0.sort(function (a, b) { return 0.5 - randomvariable });
+            var g01 = g0.sort(function () { return 0.5 - randomvariable1 });
 
         }
         {
             var h0 = [Main.safeOutlet, Main.PullPlug, Main.MoveFurniture, Main.WetHands, Main.TubMover, Main.Ladder, Main.KiteMover];
 
-            var h01 = h0.sort(function (a, b) { return 0.5 - randomvariable });
+            var h01 = h0.sort(function () { return 0.5 - randomvariable1 });
 
         }
 
@@ -163,27 +164,27 @@ window.onload = function () {
 
 
 
-
+        var randomvariable2 = Math.random();
 
         {
             var i0 = ['collectBatteriesInstr', 'pantryStockerInstr', 'phoneChargerInstr', 'waterCatcherInstr', 'closeRefrigeratorsInstr', 'turnOffAppliancesInstr', 'candleInstr'];
-            var i01 = i0.sort(function (a, b) { return 0.5 - randomvariable });
+            var i01 = i0.sort(function () { return 0.5 - randomvariable2 });
         }
         {
             var j0 = [Main.CollectBatteriesInstr, Main.PantryStockerInstr, Main.PhoneChargerInstr, Main.WaterCatcherInstr, Main.CloseRefrigeratorsInstr, Main.TurnOffAppliancesInstr, Main.CandleInstr];
 
-            var j01 = j0.sort(function (a, b) { return 0.5 - randomvariable });
+            var j01 = j0.sort(function () { return 0.5 - randomvariable2 });
         }
         {
             var k0 = ['collectBatteries', 'pantryStocker', 'phoneCharger', 'waterCatcher', 'closeRefrigerators', 'turnOffAppliances', 'candle']
 
-            var k01 = k0.sort(function (a, b) { return 0.5 - randomvariable });
+            var k01 = k0.sort(function () { return 0.5 - randomvariable2 });
 
         }
         {
             var l0 = [Main.CollectBatteries, Main.PantryStocker, Main.PhoneCharger, Main.WaterCatcher, Main.CloseRefrigerators, Main.TurnOffAppliances, Main.Candle];
 
-            var l01 = l0.sort(function (a, b) { return 0.5 - randomvariable });
+            var l01 = l0.sort(function () { return 0.5 - randomvariable2 });
 
         }
 
@@ -200,6 +201,11 @@ window.onload = function () {
         array.push([instrKey, instrObject, trialKey, trialObject]);
     }//makeAndStoreTrialStates
 }//onload
+
+
+
+
+
 
 //BOOT SCREEN/STATE
 Main.Boot = function (game) {
@@ -389,6 +395,9 @@ Main.Preloader.prototype = {
         this.game.load.image('characterIntroBox', 'images/instruction_box.png');
         //this.game.load.image('characterIntro', 'images/characterTrialIntro.png');
         this.game.load.image('checkmark', 'images/checkmark.png');
+        this.game.load.image('yes', 'images/yes.png');
+        this.game.load.image('end', 'images/end.png');
+
         //this.game.load.image('noseFront', 'images/noseFront.png');
         //this.game.load.image('noseFrontRed', 'images/noseFrontRed.png');
         this.game.load.image('noseRed', 'images/noseRed.png');
@@ -400,6 +409,8 @@ Main.Preloader.prototype = {
         this.game.load.image('stovetop', 'images/stovetop.png');
         this.game.load.image('papertowels', 'images/papertowels.png');
         this.game.load.image('end_game', 'images/end_game.png');
+     //   click_to_continue
+        this.game.load.image('click_to_continue', 'images/click_to_continue.png');
 
 
         this.game.load.image('heart', 'images/heart.png');
@@ -442,6 +453,7 @@ Main.Preloader.prototype = {
         this.game.load.image('PSC_planet', 'images/PSC_planet.png');
         this.game.load.image('psc_badge', 'images/PSC Captain Badge trimmed.png');
         this.game.load.image('restart_button', 'images/restart_button.png')
+        this.game.load.image('skip_popup', 'images/skip_popup.png');
 
         //this.game.load.image('winscreen', 'images/winscreen.png');
     },
@@ -585,14 +597,14 @@ Main.YesNo.prototype = {
 
         this.game.add.image(0, 0, 'background_stars');
         this.game.add.image(0, 0, 'background_cockpit');
-        audio.pause(); // to pause the existing runnign game soundss
+        audio.pause(); // to pause the existing runnign game sounds
         playSound('sounds/continue.mp3');
-        yes = this.game.add.sprite(250, 230, 'checkmark');
+        yes = this.game.add.sprite(250, 230, 'yes');
         yes.anchor.setTo(0.5, 0.5);
         yes.inputEnabled = true;
         yes.events.onInputDown.add(this.click, this);
 
-        no = this.game.add.sprite(this.game.width - 250, 230, 'exclamationpoint');
+        no = this.game.add.sprite(this.game.width - 250, 230, 'end');
         no.anchor.setTo(0.5, 0.5);
         no.inputEnabled = true;
         no.events.onInputDown.add(this.click, this);
@@ -604,7 +616,7 @@ Main.YesNo.prototype = {
             font: "50px Helvetica", fill: "#ffffff", align: "center"
         };//, wordWrap: true, wordWrapWidth: 635 
         var chooseText =
-             this.game.add.text(this.game.world.centerX, this.game.height - 300, "Do you want to continue to the next game? \nIf you choose No, \nCaptain Badge will not be provided.", style);
+            this.game.add.text(this.game.world.centerX, this.game.height - 300, "Select Continue to earn your \nCaptain Badge", style);
         chooseText.anchor.setTo(0.5, 0.5);
         chooseText.stroke = '#000000';
         chooseText.strokeThickness = 10;
@@ -1245,7 +1257,7 @@ Main.WinScreen.prototype.setup = function () {
     this.game.add.image(0, 0, 'background_stars');
     this.game.add.image(0, 0, 'background_cockpit');
 
- //   myNextScreen = ['ThunderDialogue', Main.ThunderDialogue];
+    //   myNextScreen = ['ThunderDialogue', Main.ThunderDialogue];
 
     var d1 = new DialogueObject('Safe-T 1000', 'safe-t_pose_atEase', 0, true);
 
@@ -1262,8 +1274,8 @@ Main.WinScreen.prototype.lateSetup = function () {
 
 
 Main.WinScreen.prototype.dialogueFinished = function () {
-    this.game.state.start('ThunderDialogue', Main.ThunderDialogue);
-    //  this.game.state.start('badge', Main.badge);
+     this.game.state.start('ThunderDialogue', Main.ThunderDialogue);
+   // this.game.state.start('badge', Main.badge);
 
 
 }
@@ -1405,11 +1417,6 @@ Main.ElectricDialogue.prototype.setup = function () {
 
 
 
-//WIN SCREEN
-
-
-
-
 
 // Bhargav
 //Gas WIN SCREEN
@@ -1438,8 +1445,8 @@ Main.GW.prototype.setup = function () {
     //bhargav
   
   
-    var d5 = new DialogueObject('Safe-T 1000', 'safe-t_pose_atEase', 0, true);
-    d5.lines.push("Congratulations! You've completed your training and are now an officially certified captain of the Gas Planetary Commission, New York State Division! Click to continue");
+    var d5 = new DialogueObject('gasian_pose_reg', 'gasian_pose_reg', 0, true);
+    d5.lines.push("Congratulations! You've completed your Gas Planet Training! Click to continue");
     dialogue.push(d5);
 
 
@@ -1447,9 +1454,9 @@ Main.GW.prototype.setup = function () {
 
 Main.GW.prototype.lateSetup = function () {
     //add badge
-    var badge = this.game.add.image(this.game.world.width / 5, this.game.world.centerY + 50, 'psc_badge');
+  /*  var badge = this.game.add.image(this.game.world.width / 5, this.game.world.centerY + 50, 'psc_badge');
     badge.anchor.setTo(0.5, 0.5);
-    badge.scale.setTo(0.25, 0.25);
+    badge.scale.setTo(0.25, 0.25);*/
 }
 
 
@@ -1483,9 +1490,9 @@ Main.SS.prototype.setup = function () {
     }
     
     audio.pause(); // to pause the existing runnign game sounds
-    playSound('sounds/Congratulations_thunders.mp3');
+    playSound('sounds/congrats_thunder.mp3');
     var d5 = new DialogueObject('Thunder Helm', 'stormian_pose_reg', 0, true);
-    d5.lines.push("Congratulations! You've completed your training and are now an officially certified captain of the Storm Planetary Commission, New York State Division! Click to continue");
+    d5.lines.push("Congratulations! You've completed your Storm planet training ! Click to continue");
     dialogue.push(d5);
   
 
@@ -1493,9 +1500,9 @@ Main.SS.prototype.setup = function () {
 
 Main.SS.prototype.lateSetup = function () {
     //add badge
-    var badge = this.game.add.image(this.game.world.width / 5, this.game.world.centerY + 50, 'psc_badge');
+ /*   var badge = this.game.add.image(this.game.world.width / 5, this.game.world.centerY + 50, 'psc_badge');
     badge.anchor.setTo(0.5, 0.5);
-    badge.scale.setTo(0.25, 0.25);
+    badge.scale.setTo(0.25, 0.25);*/
 }
 
 // end of Storm WIN SCREEN
@@ -1524,7 +1531,7 @@ Main.EW.prototype.setup = function () {
   
 
     var d5 = new DialogueObject('Safe-T 1000', 'safe-t_pose_atEase', 0, true);
-    d5.lines.push("Congratulations! You've completed your training and are now an officially certified captain of the Electric Planet Safety Commission, New York State Division! Click to Continue");
+    d5.lines.push("Congratulations! You've completed your Electric planet training ! Click to Continue");
     dialogue.push(d5);
 
   
@@ -1536,9 +1543,9 @@ Main.EW.prototype.setup = function () {
 
 Main.EW.prototype.lateSetup = function () {
     //add badge
-    var badge = this.game.add.image(this.game.world.width / 5, this.game.world.centerY + 50, 'psc_badge');
+  /*  var badge = this.game.add.image(this.game.world.width / 5, this.game.world.centerY + 50, 'psc_badge');
     badge.anchor.setTo(0.5, 0.5);
-    badge.scale.setTo(0.25, 0.25);
+    badge.scale.setTo(0.25, 0.25);*/
 }
 
 // end of Electric WIN SCREEN
@@ -1579,7 +1586,7 @@ Main.badgepic.prototype.setup = function () {
     clearInterval(idleTimer);
     delayDialogue = false;
 
-    myNextScreen = ['Thanks', Main.Thanks];
+    myNextScreen = ['printbadge', Main.printbadge];
 
     //  this.game.state.start('Thanks', Main.Thanks);
 
@@ -1604,8 +1611,9 @@ Main.badgepic.prototype.lateSetup = function () {
     badge.anchor.setTo(0.5, 0.5);
     badge.scale.setTo(0.25, 0.25);
 }
-// the below code is the web version
-/*
+
+
+
 Main.printbadge = function (game) {
     Main.StoryScreen.call(this);
 }
@@ -1629,13 +1637,10 @@ Main.printbadge.prototype.setup = function () {
 
 Main.printbadge.prototype.lateSetup = function () {
     //add badge
-    var badge = this.game.add.image(this.game.world.width / 5, this.game.world.centerY, 'psc_badge');
+    var badge = this.game.add.image(this.game.world.width / 5, this.game.world.centerY , 'psc_badge');
     badge.anchor.setTo(-0.5, 0.75);
     badge.scale.setTo(0.25, 0.25);
 }
-
-*/
-
 
 
 
@@ -1856,6 +1861,332 @@ function setTrialTextString(myString) {
 }//setTrialTextString
 
 var blackOverlay;
+
+
+
+function showTrialResultdragobjects(imageKey)//,callbackFunction)
+{
+    if ((tween == null || tween.isRunning == false) && trialOver == false) {
+        blackOverlay = this.game.add.image(0, 0, 'background_black');//var
+        blackOverlay.alpha = 0.5;
+
+        if (trialLoseCount > 2) {
+            imageKey = "skip_popup";
+        }
+
+        popup = game.add.sprite(game.world.centerX, game.height + 200, imageKey);//var 
+        popup.anchor.setTo(0.5, 0.5);
+        tween = game.add.tween(popup.position).to({ y: game.world.centerY }, 1000, Phaser.Easing.Elastic.Out, true);
+
+
+
+        popup = game.add.sprite(game.world.centerX + 400, game.world.centerY - 250, "click_to_continue");//var 
+        popup.anchor.setTo(0.5, 0.5);
+        tween = game.add.tween(popup.position).to({ y: game.world.centerY }, 1000, Phaser.Easing.Elastic.Out, true);
+
+        //   test = this.game.add.sprite(this.game.world.centerX + 400, 650, 'end_game');
+
+
+        trialOver = true;
+        started = false;
+        blackOverlay.inputEnabled = true;//popup
+        //Delay mostly for ladder game so button mashing doesn't skip result
+        game.time.events.add(Phaser.Timer.SECOND * 0.5, function () {
+
+            if (imageKey == "skip_popup") {
+                blackOverlay.events.onInputDown.add(function () {
+                    var x = this.game.input.activePointer.x;
+                    var y = this.game.input.activePointer.y;
+
+                    var buttonXleft = 340;
+                    var buttonXright = 685;
+                    var skipTop = 345;
+                    var skipBottom = 445;
+                    var retryTop = 470;
+                    var retryBottom = 560;
+
+                    //check to see if we are within the x area of the buttons
+                    if (x > buttonXleft && x < buttonXright) {
+                        //check to see if the continue button was clicked and continue game
+                        if (y > skipTop && y < skipBottom) {
+                            blackOverlay.inputEnabled = false;
+                            tween = null;
+                            currentTrialIndex++;
+                            nextTrial();
+                        }
+
+                        //check to see if the restart button was clicked and restart game
+                        if (y > retryTop && y < retryBottom) {
+                            blackOverlay.inputEnabled = false;
+                            tween = null;
+                            nextTrial();
+                        }
+                    }
+                }, this);
+            }
+            else {
+                blackOverlay.events.onInputDown.add(function () //popup
+                {
+                    if (!pause) {
+                        blackOverlay.inputEnabled = false;
+                        tween = null;
+                        nextTrial();
+                    }
+                }, this);//nullify tween in case they click before it's done
+            }
+        }, this);
+
+
+
+
+        if (hintText != null) {
+
+
+            var hint = game.add.sprite(0, game.world.height, 'dialogueBoxWide');
+            hint.anchor.setTo(0, 1);
+            hint.position.y = game.world.height + hint.height;
+
+            var style = dialogueTextStyle;
+            style.wordWrapWidth = 924;
+            //var text = game.add.text(hint.width / 2, game.world.height - hint.height / 2, hintText, style);
+            var text = game.add.text(hint.width / 2, -hint.height / 2, hintText, style);
+            text.anchor.setTo(0.5, 0.5);
+
+            nameText = this.game.add.text(125, (-hint.height) + 5, "Tip", nameTextStyle);//x 50
+
+            hint.addChild(nameText);
+            hint.addChild(text);
+
+            var hintTween = game.add.tween(hint.position).to({ y: game.world.height }, 100, Phaser.Easing.Linear.None, true).delay(200).start();
+        }
+
+        if (timer != null) {
+            stopTimer();
+        }
+        audio.pause(); // to pause the existing runnign game sounds
+        playSound('sounds/drag_all_objects_to_center.mp3');
+
+    }
+    //if (callbackFunction != null && typeof (callbackFunction) === "function")
+    // tween.onCompleteCallback(callbackFunction);
+}//showResult
+
+
+function showTrialResultturnoff(imageKey)//,callbackFunction)
+{
+    if ((tween == null || tween.isRunning == false) && trialOver == false) {
+        blackOverlay = this.game.add.image(0, 0, 'background_black');//var
+        blackOverlay.alpha = 0.5;
+
+        if (trialLoseCount > 2) {
+            imageKey = "skip_popup";
+        }
+
+        popup = game.add.sprite(game.world.centerX, game.height + 200, imageKey);//var 
+        popup.anchor.setTo(0.5, 0.5);
+        tween = game.add.tween(popup.position).to({ y: game.world.centerY }, 1000, Phaser.Easing.Elastic.Out, true);
+
+
+
+        popup = game.add.sprite(game.world.centerX + 400, game.world.centerY - 250, "click_to_continue");//var 
+        popup.anchor.setTo(0.5, 0.5);
+        tween = game.add.tween(popup.position).to({ y: game.world.centerY }, 1000, Phaser.Easing.Elastic.Out, true);
+
+        //   test = this.game.add.sprite(this.game.world.centerX + 400, 650, 'end_game');
+
+
+        trialOver = true;
+        started = false;
+        blackOverlay.inputEnabled = true;//popup
+        //Delay mostly for ladder game so button mashing doesn't skip result
+        game.time.events.add(Phaser.Timer.SECOND * 0.5, function () {
+
+            if (imageKey == "skip_popup") {
+                blackOverlay.events.onInputDown.add(function () {
+                    var x = this.game.input.activePointer.x;
+                    var y = this.game.input.activePointer.y;
+
+                    var buttonXleft = 340;
+                    var buttonXright = 685;
+                    var skipTop = 345;
+                    var skipBottom = 445;
+                    var retryTop = 470;
+                    var retryBottom = 560;
+
+                    //check to see if we are within the x area of the buttons
+                    if (x > buttonXleft && x < buttonXright) {
+                        //check to see if the continue button was clicked and continue game
+                        if (y > skipTop && y < skipBottom) {
+                            blackOverlay.inputEnabled = false;
+                            tween = null;
+                            currentTrialIndex++;
+                            nextTrial();
+                        }
+
+                        //check to see if the restart button was clicked and restart game
+                        if (y > retryTop && y < retryBottom) {
+                            blackOverlay.inputEnabled = false;
+                            tween = null;
+                            nextTrial();
+                        }
+                    }
+                }, this);
+            }
+            else {
+                blackOverlay.events.onInputDown.add(function () //popup
+                {
+                    if (!pause) {
+                        blackOverlay.inputEnabled = false;
+                        tween = null;
+                        nextTrial();
+                    }
+                }, this);//nullify tween in case they click before it's done
+            }
+        }, this);
+
+
+
+
+        if (hintText != null) {
+
+
+            var hint = game.add.sprite(0, game.world.height, 'dialogueBoxWide');
+            hint.anchor.setTo(0, 1);
+            hint.position.y = game.world.height + hint.height;
+
+            var style = dialogueTextStyle;
+            style.wordWrapWidth = 924;
+            //var text = game.add.text(hint.width / 2, game.world.height - hint.height / 2, hintText, style);
+            var text = game.add.text(hint.width / 2, -hint.height / 2, hintText, style);
+            text.anchor.setTo(0.5, 0.5);
+
+            nameText = this.game.add.text(125, (-hint.height) + 5, "Tip", nameTextStyle);//x 50
+
+            hint.addChild(nameText);
+            hint.addChild(text);
+
+            var hintTween = game.add.tween(hint.position).to({ y: game.world.height }, 100, Phaser.Easing.Linear.None, true).delay(200).start();
+        }
+
+        if (timer != null) {
+            stopTimer();
+        }
+
+
+        audio.pause(); // to pause the existing runnign game sounds
+        playSound('sounds/tap_on_all_elect.mp3');
+
+    }
+    //if (callbackFunction != null && typeof (callbackFunction) === "function")
+    // tween.onCompleteCallback(callbackFunction);
+}//showResult
+
+function showTrialResultfridge(imageKey)//,callbackFunction)
+{
+    if ((tween == null || tween.isRunning == false) && trialOver == false) {
+        blackOverlay = this.game.add.image(0, 0, 'background_black');//var
+        blackOverlay.alpha = 0.5;
+
+        if (trialLoseCount > 2) {
+            imageKey = "skip_popup";
+        }
+
+        popup = game.add.sprite(game.world.centerX, game.height + 200, imageKey);//var 
+        popup.anchor.setTo(0.5, 0.5);
+        tween = game.add.tween(popup.position).to({ y: game.world.centerY }, 1000, Phaser.Easing.Elastic.Out, true);
+
+
+
+        popup = game.add.sprite(game.world.centerX + 400, game.world.centerY - 250, "click_to_continue");//var 
+        popup.anchor.setTo(0.5, 0.5);
+        tween = game.add.tween(popup.position).to({ y: game.world.centerY }, 1000, Phaser.Easing.Elastic.Out, true);
+
+        //   test = this.game.add.sprite(this.game.world.centerX + 400, 650, 'end_game');
+
+
+        trialOver = true;
+        started = false;
+        blackOverlay.inputEnabled = true;//popup
+        //Delay mostly for ladder game so button mashing doesn't skip result
+        game.time.events.add(Phaser.Timer.SECOND * 0.5, function () {
+
+            if (imageKey == "skip_popup") {
+                blackOverlay.events.onInputDown.add(function () {
+                    var x = this.game.input.activePointer.x;
+                    var y = this.game.input.activePointer.y;
+
+                    var buttonXleft = 340;
+                    var buttonXright = 685;
+                    var skipTop = 345;
+                    var skipBottom = 445;
+                    var retryTop = 470;
+                    var retryBottom = 560;
+
+                    //check to see if we are within the x area of the buttons
+                    if (x > buttonXleft && x < buttonXright) {
+                        //check to see if the continue button was clicked and continue game
+                        if (y > skipTop && y < skipBottom) {
+                            blackOverlay.inputEnabled = false;
+                            tween = null;
+                            currentTrialIndex++;
+                            nextTrial();
+                        }
+
+                        //check to see if the restart button was clicked and restart game
+                        if (y > retryTop && y < retryBottom) {
+                            blackOverlay.inputEnabled = false;
+                            tween = null;
+                            nextTrial();
+                        }
+                    }
+                }, this);
+            }
+            else {
+                blackOverlay.events.onInputDown.add(function () //popup
+                {
+                    if (!pause) {
+                        blackOverlay.inputEnabled = false;
+                        tween = null;
+                        nextTrial();
+                    }
+                }, this);//nullify tween in case they click before it's done
+            }
+        }, this);
+
+
+
+
+        if (hintText != null) {
+
+
+            var hint = game.add.sprite(0, game.world.height, 'dialogueBoxWide');
+            hint.anchor.setTo(0, 1);
+            hint.position.y = game.world.height + hint.height;
+
+            var style = dialogueTextStyle;
+            style.wordWrapWidth = 924;
+            //var text = game.add.text(hint.width / 2, game.world.height - hint.height / 2, hintText, style);
+            var text = game.add.text(hint.width / 2, -hint.height / 2, hintText, style);
+            text.anchor.setTo(0.5, 0.5);
+
+            nameText = this.game.add.text(125, (-hint.height) + 5, "Tip", nameTextStyle);//x 50
+
+            hint.addChild(nameText);
+            hint.addChild(text);
+
+            var hintTween = game.add.tween(hint.position).to({ y: game.world.height }, 100, Phaser.Easing.Linear.None, true).delay(200).start();
+        }
+
+        if (timer != null) {
+            stopTimer();
+        } audio.pause(); // to pause the existing runnign game sounds
+        playSound('sounds/tap_on_all.mp3');
+    }
+    //if (callbackFunction != null && typeof (callbackFunction) === "function")
+    // tween.onCompleteCallback(callbackFunction);
+}//showResult
+
+
 function showTrialResult(imageKey)//,callbackFunction)
 {
     if ((tween == null || tween.isRunning == false) && trialOver == false) {
@@ -1869,22 +2200,71 @@ function showTrialResult(imageKey)//,callbackFunction)
         popup = game.add.sprite(game.world.centerX, game.height + 200, imageKey);//var 
         popup.anchor.setTo(0.5, 0.5);
         tween = game.add.tween(popup.position).to({ y: game.world.centerY }, 1000, Phaser.Easing.Elastic.Out, true);
+
+
+
+        popup = game.add.sprite(game.world.centerX + 400, game.world.centerY-250, "click_to_continue");//var 
+        popup.anchor.setTo(0.5, 0.5);
+        tween = game.add.tween(popup.position).to({ y: game.world.centerY }, 1000, Phaser.Easing.Elastic.Out, true);
+
+     //   test = this.game.add.sprite(this.game.world.centerX + 400, 650, 'end_game');
+
+
         trialOver = true;
         started = false;
         blackOverlay.inputEnabled = true;//popup
         //Delay mostly for ladder game so button mashing doesn't skip result
         game.time.events.add(Phaser.Timer.SECOND * 0.5, function () {
-            blackOverlay.events.onInputDown.add(function () //popup
-            {
-                blackOverlay.inputEnabled = false;
-                //popup = null;
-                tween = null;
-                nextTrial();
-            }, this);//nullify tween in case they click before it's done
+
+            if (imageKey == "skip_popup") {
+                blackOverlay.events.onInputDown.add(function () {
+                    var x = this.game.input.activePointer.x;
+                    var y = this.game.input.activePointer.y;
+
+                    var buttonXleft = 340;
+                    var buttonXright = 685;
+                    var skipTop = 345;
+                    var skipBottom = 445;
+                    var retryTop = 470;
+                    var retryBottom = 560;
+
+                    //check to see if we are within the x area of the buttons
+                    if (x > buttonXleft && x < buttonXright) {
+                        //check to see if the continue button was clicked and continue game
+                        if (y > skipTop && y < skipBottom) {
+                            blackOverlay.inputEnabled = false;
+                            tween = null;
+                            currentTrialIndex++;
+                            nextTrial();
+                        }
+
+                        //check to see if the restart button was clicked and restart game
+                        if (y > retryTop && y < retryBottom) {
+                            blackOverlay.inputEnabled = false;
+                            tween = null;
+                            nextTrial();
+                        }
+                    }
+                }, this);
+            }
+            else {
+                blackOverlay.events.onInputDown.add(function () //popup
+                {
+                    if (!pause) {
+                        blackOverlay.inputEnabled = false;
+                        tween = null;
+                        nextTrial();
+                    }
+                }, this);//nullify tween in case they click before it's done
+            }
         }, this);
+
+ 
 
 
         if (hintText != null) {
+
+
             var hint = game.add.sprite(0, game.world.height, 'dialogueBoxWide');
             hint.anchor.setTo(0, 1);
             hint.position.y = game.world.height + hint.height;
@@ -1910,6 +2290,343 @@ function showTrialResult(imageKey)//,callbackFunction)
     //if (callbackFunction != null && typeof (callbackFunction) === "function")
     // tween.onCompleteCallback(callbackFunction);
 }//showResult
+
+
+
+
+function showTrialResultdragfurn(imageKey)//,callbackFunction)
+{
+    if ((tween == null || tween.isRunning == false) && trialOver == false) {
+        blackOverlay = this.game.add.image(0, 0, 'background_black');//var
+        blackOverlay.alpha = 0.5;
+
+        if (trialLoseCount > 2) {
+            imageKey = "skip_popup";
+        }
+
+        popup = game.add.sprite(game.world.centerX, game.height + 200, imageKey);//var 
+        popup.anchor.setTo(0.5, 0.5);
+        tween = game.add.tween(popup.position).to({ y: game.world.centerY }, 1000, Phaser.Easing.Elastic.Out, true);
+
+
+
+        popup = game.add.sprite(game.world.centerX + 400, game.world.centerY - 250, "click_to_continue");//var 
+        popup.anchor.setTo(0.5, 0.5);
+        tween = game.add.tween(popup.position).to({ y: game.world.centerY }, 1000, Phaser.Easing.Elastic.Out, true);
+
+        //   test = this.game.add.sprite(this.game.world.centerX + 400, 650, 'end_game');
+
+
+        trialOver = true;
+        started = false;
+        blackOverlay.inputEnabled = true;//popup
+        //Delay mostly for ladder game so button mashing doesn't skip result
+        game.time.events.add(Phaser.Timer.SECOND * 0.5, function () {
+
+            if (imageKey == "skip_popup") {
+                blackOverlay.events.onInputDown.add(function () {
+                    var x = this.game.input.activePointer.x;
+                    var y = this.game.input.activePointer.y;
+
+                    var buttonXleft = 340;
+                    var buttonXright = 685;
+                    var skipTop = 345;
+                    var skipBottom = 445;
+                    var retryTop = 470;
+                    var retryBottom = 560;
+
+                    //check to see if we are within the x area of the buttons
+                    if (x > buttonXleft && x < buttonXright) {
+                        //check to see if the continue button was clicked and continue game
+                        if (y > skipTop && y < skipBottom) {
+                            blackOverlay.inputEnabled = false;
+                            tween = null;
+                            currentTrialIndex++;
+                            nextTrial();
+                        }
+
+                        //check to see if the restart button was clicked and restart game
+                        if (y > retryTop && y < retryBottom) {
+                            blackOverlay.inputEnabled = false;
+                            tween = null;
+                            nextTrial();
+                        }
+                    }
+                }, this);
+            }
+            else {
+                blackOverlay.events.onInputDown.add(function () //popup
+                {
+                    if (!pause) {
+                        blackOverlay.inputEnabled = false;
+                        tween = null;
+                        nextTrial();
+                    }
+                }, this);//nullify tween in case they click before it's done
+            }
+        }, this);
+
+
+
+
+        if (hintText != null) {
+
+
+            var hint = game.add.sprite(0, game.world.height, 'dialogueBoxWide');
+            hint.anchor.setTo(0, 1);
+            hint.position.y = game.world.height + hint.height;
+
+            var style = dialogueTextStyle;
+            style.wordWrapWidth = 924;
+            //var text = game.add.text(hint.width / 2, game.world.height - hint.height / 2, hintText, style);
+            var text = game.add.text(hint.width / 2, -hint.height / 2, hintText, style);
+            text.anchor.setTo(0.5, 0.5);
+
+            nameText = this.game.add.text(125, (-hint.height) + 5, "Tip", nameTextStyle);//x 50
+
+            hint.addChild(nameText);
+            hint.addChild(text);
+
+            var hintTween = game.add.tween(hint.position).to({ y: game.world.height }, 100, Phaser.Easing.Linear.None, true).delay(200).start();
+        }
+
+        if (timer != null) {
+            stopTimer();
+        } audio.pause(); // to pause the existing runnign game sounds
+        playSound('sounds/drag_furniture.mp3');
+    }
+    //if (callbackFunction != null && typeof (callbackFunction) === "function")
+    // tween.onCompleteCallback(callbackFunction);
+}//showResult
+
+
+function showTrialResultbatteries(imageKey)//,callbackFunction)
+{
+    if ((tween == null || tween.isRunning == false) && trialOver == false) {
+        blackOverlay = this.game.add.image(0, 0, 'background_black');//var
+        blackOverlay.alpha = 0.5;
+
+        if (trialLoseCount > 2) {
+            imageKey = "skip_popup";
+        }
+
+        popup = game.add.sprite(game.world.centerX, game.height + 200, imageKey);//var 
+        popup.anchor.setTo(0.5, 0.5);
+        tween = game.add.tween(popup.position).to({ y: game.world.centerY }, 1000, Phaser.Easing.Elastic.Out, true);
+
+
+
+        popup = game.add.sprite(game.world.centerX + 400, game.world.centerY - 250, "click_to_continue");//var 
+        popup.anchor.setTo(0.5, 0.5);
+        tween = game.add.tween(popup.position).to({ y: game.world.centerY }, 1000, Phaser.Easing.Elastic.Out, true);
+
+        //   test = this.game.add.sprite(this.game.world.centerX + 400, 650, 'end_game');
+
+
+        trialOver = true;
+        started = false;
+        blackOverlay.inputEnabled = true;//popup
+        //Delay mostly for ladder game so button mashing doesn't skip result
+        game.time.events.add(Phaser.Timer.SECOND * 0.5, function () {
+
+            if (imageKey == "skip_popup") {
+                blackOverlay.events.onInputDown.add(function () {
+                    var x = this.game.input.activePointer.x;
+                    var y = this.game.input.activePointer.y;
+
+                    var buttonXleft = 340;
+                    var buttonXright = 685;
+                    var skipTop = 345;
+                    var skipBottom = 445;
+                    var retryTop = 470;
+                    var retryBottom = 560;
+
+                    //check to see if we are within the x area of the buttons
+                    if (x > buttonXleft && x < buttonXright) {
+                        //check to see if the continue button was clicked and continue game
+                        if (y > skipTop && y < skipBottom) {
+                            blackOverlay.inputEnabled = false;
+                            tween = null;
+                            currentTrialIndex++;
+                            nextTrial();
+                        }
+
+                        //check to see if the restart button was clicked and restart game
+                        if (y > retryTop && y < retryBottom) {
+                            blackOverlay.inputEnabled = false;
+                            tween = null;
+                            nextTrial();
+                        }
+                    }
+                }, this);
+            }
+            else {
+                blackOverlay.events.onInputDown.add(function () //popup
+                {
+                    if (!pause) {
+                        blackOverlay.inputEnabled = false;
+                        tween = null;
+                        nextTrial();
+                    }
+                }, this);//nullify tween in case they click before it's done
+            }
+        }, this);
+
+
+
+
+        if (hintText != null) {
+
+
+            var hint = game.add.sprite(0, game.world.height, 'dialogueBoxWide');
+            hint.anchor.setTo(0, 1);
+            hint.position.y = game.world.height + hint.height;
+
+            var style = dialogueTextStyle;
+            style.wordWrapWidth = 924;
+            //var text = game.add.text(hint.width / 2, game.world.height - hint.height / 2, hintText, style);
+            var text = game.add.text(hint.width / 2, -hint.height / 2, hintText, style);
+            text.anchor.setTo(0.5, 0.5);
+
+            nameText = this.game.add.text(125, (-hint.height) + 5, "Tip", nameTextStyle);//x 50
+
+            hint.addChild(nameText);
+            hint.addChild(text);
+
+            var hintTween = game.add.tween(hint.position).to({ y: game.world.height }, 100, Phaser.Easing.Linear.None, true).delay(200).start();
+        }
+
+        if (timer != null) {
+            stopTimer();
+        }
+        audio.pause(); // to pause the existing runnign game sounds
+        playSound('sounds/qucikle_drag_batteries.mp3');
+
+    }
+    //if (callbackFunction != null && typeof (callbackFunction) === "function")
+    // tween.onCompleteCallback(callbackFunction);
+}//showResult
+
+
+
+function showTrialResultclutter(imageKey)//,callbackFunction)
+{
+
+
+
+    if ((tween == null || tween.isRunning == false) && trialOver == false) {
+        blackOverlay = this.game.add.image(0, 0, 'background_black');//var
+        blackOverlay.alpha = 0.5;
+
+        if (trialLoseCount > 2) {
+            imageKey = "skip_popup";
+        }
+        
+
+           
+
+    
+        popup = game.add.sprite(game.world.centerX, game.height + 200, imageKey);//var 
+        popup.anchor.setTo(0.5, 0.5);
+        tween = game.add.tween(popup.position).to({ y: game.world.centerY }, 1000, Phaser.Easing.Elastic.Out, true);
+
+
+
+        popup = game.add.sprite(game.world.centerX + 400, game.world.centerY - 250, "click_to_continue");//var 
+        popup.anchor.setTo(0.5, 0.5);
+        tween = game.add.tween(popup.position).to({ y: game.world.centerY }, 1000, Phaser.Easing.Elastic.Out, true);
+
+        //   test = this.game.add.sprite(this.game.world.centerX + 400, 650, 'end_game');
+
+
+        trialOver = true;
+        started = false;
+        blackOverlay.inputEnabled = true;//popup
+        //Delay mostly for ladder game so button mashing doesn't skip result
+        game.time.events.add(Phaser.Timer.SECOND * 0.5, function () {
+
+            if (imageKey == "skip_popup") {
+                blackOverlay.events.onInputDown.add(function () {
+                    var x = this.game.input.activePointer.x;
+                    var y = this.game.input.activePointer.y;
+
+                    var buttonXleft = 340;
+                    var buttonXright = 685;
+                    var skipTop = 345;
+                    var skipBottom = 445;
+                    var retryTop = 470;
+                    var retryBottom = 560;
+
+                    //check to see if we are within the x area of the buttons
+                    if (x > buttonXleft && x < buttonXright) {
+                        //check to see if the continue button was clicked and continue game
+                        if (y > skipTop && y < skipBottom) {
+                            blackOverlay.inputEnabled = false;
+                            tween = null;
+                            currentTrialIndex++;
+                            nextTrial();
+                        }
+
+                        //check to see if the restart button was clicked and restart game
+                        if (y > retryTop && y < retryBottom) {
+                            blackOverlay.inputEnabled = false;
+                            tween = null;
+                            nextTrial();
+                        }
+                    }
+                }, this);
+            }
+            else {
+                blackOverlay.events.onInputDown.add(function () //popup
+                {
+                    if (!pause) {
+                        blackOverlay.inputEnabled = false;
+                        tween = null;
+                        nextTrial();
+                    }
+                }, this);//nullify tween in case they click before it's done
+            }
+        }, this);
+
+
+
+
+        if (hintText != null) {
+
+
+            var hint = game.add.sprite(0, game.world.height, 'dialogueBoxWide');
+            hint.anchor.setTo(0, 1);
+            hint.position.y = game.world.height + hint.height;
+
+            var style = dialogueTextStyle;
+            style.wordWrapWidth = 924;
+            //var text = game.add.text(hint.width / 2, game.world.height - hint.height / 2, hintText, style);
+            var text = game.add.text(hint.width / 2, -hint.height / 2, hintText, style);
+            text.anchor.setTo(0.5, 0.5);
+
+            nameText = this.game.add.text(125, (-hint.height) + 5, "Tip", nameTextStyle);//x 50
+
+            hint.addChild(nameText);
+            hint.addChild(text);
+
+            var hintTween = game.add.tween(hint.position).to({ y: game.world.height }, 100, Phaser.Easing.Linear.None, true).delay(200).start();
+        }
+
+        if (timer != null) {
+            stopTimer();
+        }
+
+        audio.pause(); // to pause the existing runnign game sounds
+        playSound('sounds/drag_object.mp3');
+
+
+    }
+    //if (callbackFunction != null && typeof (callbackFunction) === "function")
+    // tween.onCompleteCallback(callbackFunction);
+}//showResult
+
+
+
 
 function win()//callbackFunction)
 {
@@ -1939,11 +2656,13 @@ function incrementLoss() {
     trialLoseCount++;
 }
 
+
+
 function loseExploded1() {
     incrementLoss();
 
     audio.pause(); // to pause the existing runnign game sounds
-    //  playSound('sounds/drag_grill.mp3');
+  //  playSound('sounds/drag_grill.mp3');
     playSound('sounds/drag_everyone.mp3');
     showTrialResult('lose_explode');
 }//loseloseExplode
@@ -1988,19 +2707,16 @@ function loseExploded6() {
 
 
 function loseExploded8() {
+   
     incrementLoss();
-
-    audio.pause(); // to pause the existing runnign game sounds
-    playSound('sounds/drag_object.mp3');
-    //  playSound('sounds/explosion.mp3');
-    showTrialResult('lose_explode');
+    showTrialResultclutter('lose_explode');
 }//lo
 function loseExploded7() {
     incrementLoss();
-
+     
     audio.pause(); // to pause the existing runnign game sounds
     playSound('sounds/drag_grill.mp3');
-    //  playSound('sounds/explosion.mp3');
+  //  playSound('sounds/explosion.mp3');
     showTrialResult('lose_explode');
 }//loseloseExplode
 
@@ -2053,9 +2769,8 @@ function loseElectric5() {
 function loseElectric6() {
     incrementLoss();
 
-    audio.pause(); // to pause the existing runnign game sounds
-    playSound('sounds/drag_furniture.mp3');
-    showTrialResult('lose_electric');
+    
+    showTrialResultdragfurn('lose_electric');
 }//loseElectric
 
 
@@ -2075,10 +2790,8 @@ function loseNeutral0() {
 }//loseNeutral
 function loseNeutral6() {
     incrementLoss();
-    audio.pause(); // to pause the existing runnign game sounds
-    playSound('sounds/tap_on_all_elect.mp3');
-
-    showTrialResult('lose_neutral');
+   
+    showTrialResultturnoff('lose_neutral');
 }//loseNeutral
 
 
@@ -2086,10 +2799,7 @@ function loseNeutral6() {
 
 function loseNeutral1() {
     incrementLoss();
-    audio.pause(); // to pause the existing runnign game sounds
-    playSound('sounds/qucikle_drag_batteries.mp3');
-
-    showTrialResult('lose_neutral');
+  showTrialResultbatteries('lose_neutral');
 }//loseNeutral
 
 function loseNeutral2() {
@@ -2102,10 +2812,8 @@ function loseNeutral2() {
 
 function loseNeutral3() {
     incrementLoss();
-    audio.pause(); // to pause the existing runnign game sounds
-    playSound('sounds/drag_all_objects_to_center.mp3');
-
-    showTrialResult('lose_neutral');
+   
+    showTrialResultdragobjects('lose_neutral');
 }//loseNeutral
 
 function loseNeutral4() {
@@ -2118,11 +2826,14 @@ function loseNeutral4() {
 
 function loseNeutral5() {
     incrementLoss();
-    audio.pause(); // to pause the existing runnign game sounds
-    playSound('sounds/tap_on_all.mp3');
+  //  audio.pause(); // to pause the existing runnign game sounds
+ //   playSound('sounds/tap_on_all.mp3');
 
-    showTrialResult('lose_neutral');
+    showTrialResultfridge('lose_neutral');
 }//loseNeutral
+
+
+
 
 
 
